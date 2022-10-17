@@ -15,22 +15,22 @@ function App(){
 
     const [employeeList, setEmployeelist] = useState([]);
 
-    //const [usernameReg, setUsernameReg] = useState("");
-    //const [passwordReg, setPasswordReg] = useState("");
+    const [usernameReg, setUsernameReg] = useState("");
+    const [passwordReg, setPasswordReg] = useState("");
 
      const [username, setUsername] = useState("");
      const [password, setPassword] = useState("");
      const [loginStatus, setLoginStatus] = useState(false);
 
     Axios.defaults.withCredentials = true;
-    // const register = () =>{
-    //   Axios.post('http://localhost:3001/register', {username: usernameReg, password: passwordReg}).then((response)=>{
-    //   console.log(response);
-    // })
-    // };
+     const register = () =>{
+       Axios.post('http://localhost:3001/register', {username: usernameReg, password: passwordReg}).then((response)=>{
+       console.log(response);
+     })
+     };
 
     const login = () =>{
-      Axios.post('http://localhost:3001/login', {username: username, password: password}).then((response)=>{
+      Axios.post('https://mysql-deplay-heroku-test.herokuapp.com/login', {username: username, password: password}).then((response)=>{
         if(!response.data.auth){
           setLoginStatus(false);
         } else {
@@ -42,7 +42,7 @@ function App(){
   
 
     const addEmployee = () =>{
-        Axios.post('http://localhost:3001/create', {
+        Axios.post('https://mysql-deplay-heroku-test.herokuapp.com/create', {
             name: name, 
             age: age, 
             country: country, 
@@ -60,13 +60,13 @@ function App(){
     };
 
     const getEmployees = () =>{
-        Axios.get('http://localhost:3001/employees').then((response) =>{
+        Axios.get('https://mysql-deplay-heroku-test.herokuapp.com/employees').then((response) =>{
           setEmployeelist(response.data);
         });
       };
 
    const updateEmployeeWage = (id) =>{
-         Axios.put(`http://localhost:3001/update/${id}`, {wage: newWage, id: id}).then((response)=>{
+         Axios.put(`https://mysql-deplay-heroku-test.herokuapp.com/update/${id}`, {wage: newWage, id: id}).then((response)=>{
              setEmployeelist(employeeList.map((val) => {
                if(val.id === id){
                  return {id: val.id, name: val.name, age: val.age, country: val.country, position: val.position, wage: newWage}
@@ -78,7 +78,7 @@ function App(){
     }
 
     const deleteEmployee = (id) =>{
-        Axios.delete(`http://localhost:3001/delete/${id}`).then((response) =>{
+        Axios.delete(`https://mysql-deplay-heroku-test.herokuapp.com/delete/${id}`).then((response) =>{
             setEmployeelist(employeeList.filter((val) =>{
                 return val.id !== id
             }))
@@ -90,7 +90,7 @@ function App(){
     }
 
     useEffect(() => {
-      Axios.get("http://localhost:3001/login").then((response) =>{
+      Axios.get("https://mysql-deplay-heroku-test.herokuapp.com/login").then((response) =>{
         if(response.data.loggedIn === true){
           setLoginStatus(response.data.user[0].username);
         }
@@ -100,12 +100,12 @@ function App(){
 
     return(
         <div className="App">
-            {/* <h1>Registration</h1>
+             <h1>Registration</h1>
             <label>Username</label>
             <input type="text" onChange={(e)=>{setUsernameReg(e.target.value)}}/>
             <label>Password</label>
             <input type="password" onChange={(e)=>{setPasswordReg(e.target.value)}}/>
-            <button onClick={register}>Register</button> */}
+            <button onClick={register}>Register</button>
             <div className="information">
             {!loginStatus ?
             <div>
