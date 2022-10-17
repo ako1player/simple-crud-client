@@ -15,19 +15,19 @@ function App(){
 
     const [employeeList, setEmployeelist] = useState([]);
 
-    const [usernameReg, setUsernameReg] = useState("");
-    const [passwordReg, setPasswordReg] = useState("");
+    // const [usernameReg, setUsernameReg] = useState("");
+    // const [passwordReg, setPasswordReg] = useState("");
 
      const [username, setUsername] = useState("");
      const [password, setPassword] = useState("");
      const [loginStatus, setLoginStatus] = useState(false);
 
     Axios.defaults.withCredentials = true;
-     const register = () =>{
-       Axios.post('https://mysql-deplay-heroku-test.herokuapp.com/register', {username: usernameReg, password: passwordReg}).then((response)=>{
-       console.log(response);
-     })
-     };
+    //  const register = () =>{
+    //    Axios.post('https://mysql-deplay-heroku-test.herokuapp.com/register', {username: usernameReg, password: passwordReg}).then((response)=>{
+    //    console.log(response);
+    //  })
+    //  };
 
     const login = () =>{
       Axios.post('https://mysql-deplay-heroku-test.herokuapp.com/login', {username: username, password: password}).then((response)=>{
@@ -100,13 +100,13 @@ function App(){
 
     return(
         <div className="App">
-             <h1>Registration</h1>
+             {/* <h1>Registration</h1>
             <label>Username</label>
             <input type="text" onChange={(e)=>{setUsernameReg(e.target.value)}}/>
             <label>Password</label>
             <input type="password" onChange={(e)=>{setPasswordReg(e.target.value)}}/>
             <button onClick={register}>Register</button>
-            <div className="information">
+            <div className="information"> */}
             {!loginStatus ?
             <div>
               <h1>Login</h1>
