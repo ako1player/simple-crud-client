@@ -1,4 +1,4 @@
 /*
   Access-Control-Allow-Origin: *
 
-/api/*  https://mysql-deplay-heroku-test.herokuapp.com/:splat  200
+/api/*  https://mysql-deplay-heroku-test.herokuapp.com/:login  200
