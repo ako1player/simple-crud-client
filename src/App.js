@@ -24,7 +24,7 @@ function App(){
 
     Axios.defaults.withCredentials = true;
      const register = () =>{
-       Axios.post('http://localhost:3001/register', {username: usernameReg, password: passwordReg}).then((response)=>{
+       Axios.post('https://mysql-deplay-heroku-test.herokuapp.com/register', {username: usernameReg, password: passwordReg}).then((response)=>{
        console.log(response);
      })
      };
